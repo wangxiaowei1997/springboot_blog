@@ -2,7 +2,7 @@ package com.zzus.blog.config.security.model;
 
 
 
-import com.zzus.blog.entity.User;
+import com.zzus.blog.bean.db.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 

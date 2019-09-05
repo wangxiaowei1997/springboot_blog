@@ -1,4 +1,4 @@
-package com.zzus.blog.entity;
+package com.zzus.blog.bean.db;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

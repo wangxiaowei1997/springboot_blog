@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzus.blog.mapper.ArticleMapper">
+
+    <resultMap id="beanMap" type="com.zzus.blog.bean.db.ArticleDetail">
+        <id column="id" property="id"/>
+        <result column="article_no" property="articleNo"/>
+        <result column="author" property="author"/>
+        <result column="article_text" property="articleText"/>
+        <result column="status" property="status"/>
+        <result column="like" property="like"/>
+        <result column="favorite" property="favorite"/>
+    </resultMap>
+
+    <select id="getArticleDetail" resultMap="beanMap">
+        select
+        ad.id,
+        ad.article_no,
+        ad.author,
+        ad.article_text,
+        ad.status,
+        ad.like,
+        ad.favorite
+        from `article_detail`  ad
+        where ad.article_no = #{articleNo}
+    </select>
+
+    <insert id="addArticleDetail" parameterType="com.zzus.blog.bean.db.ArticleDetail">
+        insert into `article_detail`(
+        `article_no`
+        , `author`
+        , `article_text`
+        , `status`
+        , `like`
+        , `favorite`
+        )
+        values (
+        #{articleNo}
+        , #{author}
+        , #{articleText}
+        , #{status}
+        , #{like}
+        , #{favorite}
+        )
+
+    </insert>
+
+    <update id="updateArticle" parameterType="com.zzus.blog.bean.db.ArticleDetail">
+
+        update `article_detail`
+        set `article_text` = #{articleText}
+        , `status` = #{status}
+        , `like` = #{like}
+        , `favorite` = #{favorite}
+        where `article_no` = #{articleNo}
+
+    </update>
+
+
+    <update id="updateArticleIgnoreNull" parameterType="com.zzus.blog.bean.db.ArticleDetail">
+
+        update `article_detail`
+        set
+
+        <if test="articleText != null">
+            `article_text` = #{articleText}
+        </if>
+        <if test="status != null">
+            , `status` = #{status}
+        </if>
+        <if test="like != null">
+            , `like` = #{like}
+        </if>
+        <if test="favorite != null">
+            , `favorite` = #{favorite}
+        </if>
+        where `article_no` = #{articleNo}
+    </update>
+</mapper>

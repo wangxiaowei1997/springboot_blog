@@ -4,7 +4,7 @@ package com.zzus.blog.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
-import com.zzus.blog.entity.User;
+import com.zzus.blog.bean.db.User;
 import com.zzus.blog.mapper.UserMapper;
 import com.zzus.blog.config.security.model.SecurityModelFactory;
 import org.springframework.beans.factory.annotation.Autowired;
